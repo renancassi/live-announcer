@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 
 const pingCommand = async (interaction) => {
-  await interaction.reply("Pong?");
+  await interaction.reply("AAAA?");
 };
 
 module.exports = {
