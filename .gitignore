@@ -1,4 +1,7 @@
 # ENVIRONMENT
 config.json
+.env
+
+# DEPENDENCY DIRECTORIES
 package-lock.json
-./node_modules
+node_modules
