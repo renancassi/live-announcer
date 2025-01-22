@@ -26,8 +26,9 @@ const announceCommand = async (interaction) => {
     .setTitle("Livestream Começando!")
     .setURL(interaction.options.getString("livestream-url"));
 
-  const channel = interaction.channel;
+  interaction.reply("Anúncio realizado!");
 
+  const channel = interaction.channel;
   channel.send({ embeds: [announceEmbed] });
 };
 
