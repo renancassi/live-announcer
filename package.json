@@ -8,7 +8,8 @@
     "deployGuild": "node ./utils/guild/deploy-guild-commands.js",
     "deleteGuild": "node ./utils/guild/delete-guild-commands.js",
     "deployGlobal": "node ./utils/global/deploy-app-commands.js",
-    "deleteGlobal": "node ./utils/global/delete-app-commands.js"
+    "deleteGlobal": "node ./utils/global/delete-app-commands.js",
+    "bot": "node index.js"
   },
   "keywords": [],
   "author": "",
