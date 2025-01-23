@@ -2,10 +2,10 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const { REST, Routes } = require("discord.js");
-const { TOKEN, CLIENTID } = require("./config.json");
+const { TOKEN, ClientId, GuildId } = require("../../config.json");
 
 const commands = [];
-const foldersPath = path.join(__dirname, "commands");
+const foldersPath = path.join(__dirname, "../../commands");
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
@@ -32,7 +32,7 @@ const rest = new REST().setToken(TOKEN);
   try {
     console.log(`[LOG] - started refreshing ${commands.length} application (/) commands`);
 
-    const data = await rest.put(Routes.applicationCommands(CLIENTID), { body: commands });
+    const data = await rest.put(Routes.applicationGuildCommands(ClientId, GuildId), { body: commands });
 
     console.log(`[LOG] - successfully reloaded ${data.length} application (/) commands.`);
   } catch (error) {

@@ -5,6 +5,49 @@ O Live Announcer é um BOT gratuito e opensource que promete avisar no discord, 
 - Javascript
 - Node.js
 
+## Configurando o projeto
+Instale as dependências:
+```bash
+npm install
+```
+
+Crie um arquivo .json com a seguinte estrutura:
+```JSON
+{
+    "TOKEN":"SeuToken",
+    "ClientId":"SeuClientId",
+    "GuildId": "IdDoSeuServidor"
+}
+```
+
+## Rodando o projeto
+Alguns scripts foram definidos no package.json, use conforme sua necessidade:
+
+Deploy dos comandos (Global)
+```bash
+npm run deployGlobal
+```
+
+Deploy dos comandos (Servidor/Guild)
+```bash
+npm run deployGuild
+```
+
+Remover os comandos (Global)
+```bash
+npm run deleteGlobal
+```
+
+Remover os comandos (Servidor/Guild)
+```bash
+npm run deleteGuild
+```
+
+Iniciar o bot
+```bash
+npm run bot
+```
+
 ## Roadmap
 Tenho alguns objetivos para esse projeto, apesar de não os ter planejados muito bem.
 
