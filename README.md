@@ -16,7 +16,7 @@ Crie um arquivo .json com a seguinte estrutura:
 {
     "TOKEN":"SeuToken",
     "ClientId":"SeuClientId",
-    "GuildId": "Id_do_seu_servidor (Geralmente usado para testes)"
+    "GuildId": "IdDoSeuServidor"
 }
 ```
 
