@@ -11,12 +11,13 @@ Instale as dependências:
 npm install
 ```
 
+Insira o token do seu bot no arquivo `.env.example` e, em seguida, remova a extensão ".example" do nome do arquivo.
+
 Crie um arquivo .json com a seguinte estrutura:
 ```JSON
 {
-    "TOKEN":"SeuToken",
     "ClientId":"SeuClientId",
-    "GuildId": "Id_do_seu_servidor (Geralmente usado para testes)"
+    "GuildId": "IdDoSeuServidor"
 }
 ```
 
