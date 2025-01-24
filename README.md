@@ -11,10 +11,11 @@ Instale as dependências:
 npm install
 ```
 
+Insira o token do seu bot no arquivo `.env.example` e, em seguida, remova a extensão ".example" do nome do arquivo.
+
 Crie um arquivo .json com a seguinte estrutura:
 ```JSON
 {
-    "TOKEN":"SeuToken",
     "ClientId":"SeuClientId",
     "GuildId": "IdDoSeuServidor"
 }
@@ -64,8 +65,23 @@ Funcionalidades que já existem
 > [Documentação](https://jevrton.gitbook.io/live-announcer)
 
 ## FAQ
-#### O projeto é gratuito
+#### O projeto é gratuito?
 Sim, o projeto é, até o momento, gratuito e de código aberto.
 
+#### Posso contribuir com o projeto?
+Claro! O projeto é de código aberto, então você pode criar um fork no GitHub, desenvolver melhorias e abrir pull requests para contribuir.
+
+#### Não sou um desenvolvedor, como posso sugerir novas funcionalidades?
+Você pode sugerir ideias e melhorias na aba “Issues” do GitHub ou na aba "Ajuda" do Discord.
+
 #### Estou com problemas, como posso solicitar ajuda?
-Você pode solicitar ajuda tanto pela aba "Issues" dentro do github ou na aba "Ajuda" do discord
+Você pode solicitar ajuda tanto pela aba "Issues" dentro do github ou na aba "Ajuda" do discord.
+
+#### O bot funciona apenas no Discord?
+Sim, atualmente o Live Announcer foi desenvolvido para funcionar exclusivamente no Discord.
+
+#### O bot é seguro para ser usado?
+Sim, o código é aberto, o que permite que você revise toda a lógica do bot. Recomendamos não compartilhar seu token ou informações sensíveis.
+
+
+

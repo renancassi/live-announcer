@@ -1,9 +1,13 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const { Client, Events, GatewayIntentBits, Collection, MessageFlags } = require("discord.js");
-const { TOKEN } = require("./config.json");
-const internal = require("node:stream");
+const {
+  Client,
+  Events,
+  GatewayIntentBits,
+  Collection,
+  MessageFlags 
+} = require("discord.js");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -63,4 +67,5 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-client.login(TOKEN);
+require('dotenv').config();
+client.login(process.env.TOKEN_BOT_DISCORD);

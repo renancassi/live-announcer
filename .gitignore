@@ -5,3 +5,6 @@ config.json
 # DEPENDENCY DIRECTORIES
 package-lock.json
 node_modules
+
+# OTHER DIRECTORIES
+playground
