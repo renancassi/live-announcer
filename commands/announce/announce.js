@@ -44,21 +44,25 @@ const announceCommand = async (interaction) => {
   let image = null;
   let field = null;
 
+ 
   // Verifica se é um link da Twitch e obtém o avatar, se for
-  if (platform === "Twitch") {
-    const channel = new TwitchChannelInfo(liveURL)
-    const avatar = channel.userAvatar()
-    const liveThumbnail = channel.liveThumbnail()
-    const gameInLive = channel.inLiveGame()
-    try {
-      thumbnail = await avatar;
-      image = await liveThumbnail
-      field = await gameInLive
-    } catch (error) {
-      console.error("Erro ao obter avatar do usuário Twitch:", error);
-      thumbnail = null; // Avatar padrão caso falhe
-    }
+  // TODO: Melhorar a forma que isso é feito. (Classe/função)
+  switch (platform) {
+    case "Twitch":
+      const channel = new TwitchChannelInfo(liveURL)
+      const avatar = channel.userAvatar()
+      const liveThumbnail = channel.liveThumbnail()
+      const gameInLive = channel.inLiveGame()
+      try {
+        thumbnail = await avatar;
+        image = await liveThumbnail
+        field = await gameInLive
+      } catch (error) {
+        console.error("Erro ao obter avatar do usuário Twitch:", error);
+      }
+      break;
   }
+
 
   // Cria um botão com o link da live
   const urlButton = new ButtonBuilder()
@@ -76,16 +80,16 @@ const announceCommand = async (interaction) => {
     .setURL(liveURL);
 
   if (thumbnail) {
-    announceEmbed.setThumbnail(thumbnail); 
+    announceEmbed.setThumbnail(thumbnail);
   }
-  
+
   if (image) {
     announceEmbed.setImage(image)
   }
-  
+
   if (field) {
     announceEmbed.addFields({ name: "Game:", value: `${field}` });
-}
+  }
 
   // Responde ao comando
   interaction.reply("Anúncio realizado!");
