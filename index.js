@@ -36,8 +36,8 @@ for (const folder of commandFolders) {
 
 /* Startup Log */
 client.once(Events.ClientReady, (readyClient) => {
-  console.warn(`----------------------------------------`);
-  console.warn(`[ ${readyClient.user.tag} ] - bot is ready!`);
+  console.info(`----------------------------------------`);
+  console.info(`[ ${readyClient.user.tag} ] - bot is ready!`);
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
