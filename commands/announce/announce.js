@@ -42,9 +42,9 @@ const announceCommand = async (interaction) => {
   // Variável para armazenar o avatar (padrão: vazio)
   let thumbnail = null;
   let image = null;
-  let field = null;
-  let displayName = null;
-  let liveTitle = null;
+  let fieldGame = null;
+  let fieldDisplayName = null;
+  let fieldTitle = null;
 
   // Verifica se é um link da Twitch e obtém o avatar, se for
   // TODO: Melhorar a forma que isso é feito. (Classe/função)
@@ -61,9 +61,9 @@ const announceCommand = async (interaction) => {
       try {
         thumbnail = await avatar;
         image = await liveThumbnail
-        field = await gameInLive
-        displayName = await userDisplayName
-        liveTitle = await title
+        fieldGame = await gameInLive
+        fieldDisplayName = await userDisplayName
+        fieldTitle = await title
       } catch (error) {
         console.error("Erro ao obter informações do usuário Twitch:", error);
       }
@@ -84,12 +84,12 @@ const announceCommand = async (interaction) => {
   const announceEmbed = new EmbedBuilder()
     .setURL(liveURL)
 
-  if (liveTitle) {
-    announceEmbed.setTitle(liveTitle)
+  if (fieldTitle) {
+    announceEmbed.setTitle(fieldTitle)
   }
 
-  if (displayName && field) {
-    announceEmbed.setAuthor({ name: `${displayName}  |  ${field}` })
+  if (fieldDisplayName && fieldGame) {
+    announceEmbed.setAuthor({ name: `${fieldDisplayName}  |  ${fieldGame}` })
   }
 
   if (thumbnail) {
