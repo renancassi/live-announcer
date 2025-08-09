@@ -42,9 +42,9 @@ const announceCommand = async (interaction) => {
   // Variável para armazenar o avatar (padrão: vazio)
   let thumbnail = null;
   let image = null;
-  let field = null;
+  let fieldGame = null;
 
- 
+
   // Verifica se é um link da Twitch e obtém o avatar, se for
   // TODO: Melhorar a forma que isso é feito. (Classe/função)
   switch (platform) {
@@ -53,12 +53,16 @@ const announceCommand = async (interaction) => {
       const avatar = channel.userAvatar()
       const liveThumbnail = channel.liveThumbnail()
       const gameInLive = channel.inLiveGame()
+      const liveTitle = channel.liveTitle()
+      const displayName = channel.displayName()
       try {
         thumbnail = await avatar;
         image = await liveThumbnail
-        field = await gameInLive
+        fieldGame = await gameInLive
+        fieldTitle = await liveTitle
+        fieldDisplayName = await displayName
       } catch (error) {
-        console.error("Erro ao obter avatar do usuário Twitch:", error);
+        console.error("Erro ao obter informação do usuário Twitch:", error);
       }
       break;
   }
@@ -87,8 +91,16 @@ const announceCommand = async (interaction) => {
     announceEmbed.setImage(image)
   }
 
-  if (field) {
-    announceEmbed.addFields({ name: "Game:", value: `${field}` });
+  if (fieldDisplayName) {
+    announceEmbed.addFields({ name: "User:", value: `${fieldDisplayName}`, inline: true });
+  }
+
+  if (fieldGame) {
+    announceEmbed.addFields({ name: "Game:", value: `${fieldGame}`, inline: true });
+  }
+
+  if (fieldTitle) {
+    announceEmbed.addFields({ name: "Title:", value: `${fieldTitle}` })
   }
 
   // Responde ao comando
