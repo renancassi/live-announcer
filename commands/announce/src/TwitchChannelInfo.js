@@ -174,15 +174,9 @@ class TwitchChannelInfo {
         const streamData = await streamResponse.json();
         
         if (streamData.data && streamData.data.length > 0) {
-<<<<<<< HEAD
-            return streamData.data[0].title; // Nome do jogo
-        } else {
-            return "O usuário não está ao vivo.";
-=======
             return streamData.data[0].title; // Título da live
         } else {
             return "Nenhum título encontrado ou usuário não está ao vivo.";
->>>>>>> 1e8d3ca8fd77a368f358f39da280254f9961b0d8
         }
     }
 
