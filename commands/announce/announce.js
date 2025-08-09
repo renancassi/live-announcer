@@ -42,17 +42,25 @@ const announceCommand = async (interaction) => {
   // Variável para armazenar o avatar (padrão: vazio)
   let thumbnail = null;
   let image = null;
+<<<<<<< HEAD
   let fieldGame = null;
 
+=======
+  let field = null;
+  let displayName = null;
+  let liveTitle = null;
+>>>>>>> 1e8d3ca8fd77a368f358f39da280254f9961b0d8
 
   // Verifica se é um link da Twitch e obtém o avatar, se for
   // TODO: Melhorar a forma que isso é feito. (Classe/função)
   switch (platform) {
     case "Twitch":
+
       const channel = new TwitchChannelInfo(liveURL)
       const avatar = channel.userAvatar()
       const liveThumbnail = channel.liveThumbnail()
       const gameInLive = channel.inLiveGame()
+<<<<<<< HEAD
       const liveTitle = channel.liveTitle()
       const displayName = channel.displayName()
       try {
@@ -63,10 +71,22 @@ const announceCommand = async (interaction) => {
         fieldDisplayName = await displayName
       } catch (error) {
         console.error("Erro ao obter informação do usuário Twitch:", error);
+=======
+      const userDisplayName = channel.displayName()
+      const title = channel.liveTitle()
+
+      try {
+        thumbnail = await avatar;
+        image = await liveThumbnail
+        field = await gameInLive
+        displayName = await userDisplayName
+        liveTitle = await title
+      } catch (error) {
+        console.error("Erro ao obter informações do usuário Twitch:", error);
+>>>>>>> 1e8d3ca8fd77a368f358f39da280254f9961b0d8
       }
       break;
   }
-
 
   // Cria um botão com o link da live
   const urlButton = new ButtonBuilder()
@@ -80,8 +100,15 @@ const announceCommand = async (interaction) => {
 
   // Cria um embed
   const announceEmbed = new EmbedBuilder()
-    .setTitle("🎥 Livestream ON!")
-    .setURL(liveURL);
+    .setURL(liveURL)
+
+  if (liveTitle) {
+    announceEmbed.setTitle(liveTitle)
+  }
+
+  if (displayName && field) {
+    announceEmbed.setAuthor({ name: `${displayName}  |  ${field}` })
+  }
 
   if (thumbnail) {
     announceEmbed.setThumbnail(thumbnail);
@@ -91,6 +118,7 @@ const announceCommand = async (interaction) => {
     announceEmbed.setImage(image)
   }
 
+<<<<<<< HEAD
   if (fieldDisplayName) {
     announceEmbed.addFields({ name: "User:", value: `${fieldDisplayName}`, inline: true });
   }
@@ -103,6 +131,8 @@ const announceCommand = async (interaction) => {
     announceEmbed.addFields({ name: "Title:", value: `${fieldTitle}` })
   }
 
+=======
+>>>>>>> 1e8d3ca8fd77a368f358f39da280254f9961b0d8
   // Responde ao comando
   interaction.reply("Anúncio realizado!");
 
@@ -114,9 +144,7 @@ const announceCommand = async (interaction) => {
   });
 };
 
-/*
-* function body
-*/
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName(commandName)

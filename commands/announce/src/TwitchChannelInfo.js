@@ -118,6 +118,25 @@ class TwitchChannelInfo {
         // Retorna null se o streamer não estiver ao vivo
         return null;
     }
+    async displayName() {
+        const TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID;
+        const accessToken = await this.#getTwitchToken();
+        
+        // Obter informações do usuário
+        const userResponse = await fetch(`https://api.twitch.tv/helix/users?login=${this.channelName}`, {
+            headers: {
+                "Client-ID": TWITCH_CLIENT_ID,
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+
+        const userData = await userResponse.json();
+        if (userData.data && userData.data.length > 0) {
+            return userData.data[0].display_name; // Nome de exibição
+        } else {
+            throw new Error("Usuário Twitch não encontrado.");
+        }
+    }
 
     async inLiveGame() {
         const TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID;
@@ -155,9 +174,15 @@ class TwitchChannelInfo {
         const streamData = await streamResponse.json();
         
         if (streamData.data && streamData.data.length > 0) {
+<<<<<<< HEAD
             return streamData.data[0].title; // Nome do jogo
         } else {
             return "O usuário não está ao vivo.";
+=======
+            return streamData.data[0].title; // Título da live
+        } else {
+            return "Nenhum título encontrado ou usuário não está ao vivo.";
+>>>>>>> 1e8d3ca8fd77a368f358f39da280254f9961b0d8
         }
     }
 
